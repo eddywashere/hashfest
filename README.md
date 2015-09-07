@@ -1,6 +1,6 @@
-# json-manifest [![Build Status](https://api.travis-ci.org/finn-no/json-manifest.png)](http://travis-ci.org/finn-no/json-manifest)
+# hashfest [![Build Status](https://api.travis-ci.org/eddywashere/hashfest.png)](http://travis-ci.org/eddywashere/hashfest)
 
-Create a JSON manifest of static asset files which has filenames with hash in their filenames.
+Create a JSON manifest of static asset files which has filenames with hash in their filenames. A fork of https://github.com/finn-no/json-manifest.
 
 ## Goal
 
@@ -8,29 +8,29 @@ Create a JSON manifest of static asset files which has filenames with hash in th
 
     |- public
     `-- js
-      | - common-b369de85.js
-      ` - vendor-e4137d8d.js
+      | - common.b369de85.js
+      ` - vendor.e4137d8d.js
 
 ***Should result in manifest.json***
 
 ```json
 {
-	"js/common.js": "js/common-b369de85.js",
-	"js/vendor.js": "js/vendor-e4137d8d.js"
+	"js/common.js": "js/common.b369de85.js",
+	"js/vendor.js": "js/vendor.e4137d8d.js"
 }
 ```
 
 ## Usage
 
-### jsonManifest(directory, filePattern): readable stream
+### hashfest(directory, filePattern, publicPath): readable stream
 
 ```js
 var fs = require('fs');
-var jsonManifest = require('json-manifest');
+var hashfest = require('hashfest');
 
 var destFile = fs.createWriteStream('manifest.json');
 
-jsonManifest('./public', 'js/*.js')
+hashfest('./build', '*', 'https://example.com')
 	.on('error', function(err){
 		console.error('Error while creating manifest :(', err.stack);
 	})
@@ -40,15 +40,16 @@ jsonManifest('./public', 'js/*.js')
 ### Command line
 
 ```bash
-$ npm install -g json-manifest
-$ json-manifest public js/*.js > manifest.json
+$ npm install -g hashfest
+$ hashfest public "*" http://example.com > manifest.json
 ```
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2015 FINN.no AS
+Copyright (c) 2015 FINN.no AS<br>
+              2015 Eddy Hernandez
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

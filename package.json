@@ -1,12 +1,12 @@
 {
-  "name": "json-manifest",
+  "name": "hashfest",
   "version": "1.0.1",
-  "description": "Create a JSON manifest of static asset files having hash in their filenames",
+  "description": "Create a JSON manifest from a directory",
   "main": "index.js",
-  "bugs": "https://github.com/finn-no/json-manifest/issues",
+  "bugs": "https://github.com/eddywashere/hashfest/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:finn-no/json-manifest.git"
+    "url": "git@github.com:eddywashere/hashfest.git"
   },
   "keywords": [
     "manifest",
@@ -18,10 +18,9 @@
     "bin"
   ],
   "bin": {
-    "json-manifest": "./bin/json-manifest"
+    "hashfest": "./bin/hashfest"
   },
   "scripts": {
-    "pretest": "finn-js-code-style *.js",
     "test": "mocha --reporter spec"
   },
   "engines": {
@@ -31,9 +30,8 @@
     "glob": "^4.3.5"
   },
   "devDependencies": {
-    "finn-js-code-style": "^4.1.2",
     "mocha": "^2.1.0"
   },
-  "author": "FINN.no AS",
+  "authors": ["FINN.no AS", "eddy hernandez"],
   "license": "MIT"
 }

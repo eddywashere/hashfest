@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var hashfest = require('../');
+
+var dir = process.argv[2];
+var pattern = process.argv[3];
+var publicPath = process.argv[4] || '';
+
+if (!dir || !pattern) {
+	return console.error('syntax: hashfest <directory> <file-pattern> <publicPath>');
+}
+
+hashfest(dir, pattern, publicPath).on('error', console.error).pipe(process.stdout);
